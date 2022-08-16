@@ -49,7 +49,6 @@ const putUsuario = async (req = request, res = response)=>{
 	// eslint-disable-next-line no-unused-vars
 	const {_id, password, google, correo, ...resto} = req.body;
 
-	//TODO: validar ID contra base de datos
 	if(password){
 		//* ENCRIPTAR CONTRASEÑAa
 		const sal = bcrypt.genSaltSync();
@@ -66,11 +65,10 @@ const deleteUsuarios = async (req , res = response)=>{
 	//* ELIMINAR FISICAMENTE
 	// const usuario = await Usuario.findByIdAndDelete(id);
 
-	const usuario = await Usuario.findByIdAndUpdate(id, {estado:false});
+	const userEliminado = await Usuario.findByIdAndUpdate(id, {estado:false});
+	const usuarioAutenticado = req.usuario;
 
-	res.json({
-		usuario
-	});
+	res.json({userEliminado, usuarioAutenticado});
 };
 
 module.exports = {

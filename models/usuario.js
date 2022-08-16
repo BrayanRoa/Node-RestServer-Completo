@@ -35,7 +35,8 @@ const usuarioSchema = new Schema({
 
 usuarioSchema.methods.toJSON = function(){
 	// eslint-disable-next-line no-unused-vars
-	const {__v, password, ...usuario} = this.toObject();
+	const {__v, password, _id, ...usuario} = this.toObject();
+	usuario.uid = _id;
 	return usuario;
 };
 
