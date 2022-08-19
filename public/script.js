@@ -1,11 +1,16 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+
+let url = (window.location.hostname.includes('localhost')) 
+	? 'http://localhost:3000/api/auth/google'
+	: 'https://api-node-restserver-completo.herokuapp.com/api/auth/google';
+
 function handleCredentialResponse(response) {
            
 	//* GOOGLE TOKEN
 	const body = {id_token:response.credential};
 	console.log(response.credential);
-	fetch('http://localhost:3000/api/auth/google', {
+	fetch(url, {
 		method:'POST',
 		headers:{
 			'Content-Type':'application/json'
