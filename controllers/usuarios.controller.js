@@ -50,7 +50,7 @@ const putUsuario = async (req = request, res = response)=>{
 	const {_id, password, google, correo, ...resto} = req.body;
 
 	if(password){
-		//* ENCRIPTAR CONTRASEÑAa
+		//* ENCRIPTAR CONTRASEÑA
 		const sal = bcrypt.genSaltSync();
 		resto.password = bcrypt.hashSync(password, sal);
 	}

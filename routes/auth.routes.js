@@ -17,4 +17,5 @@ router.post('/google',[
 	validarCampos
 ], googleSignIn);
 
+
 module.exports = router;
