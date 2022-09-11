@@ -14,7 +14,8 @@ class Server{
 			usuarios  :'/api/usuarios',
 			categorias:'/api/categorias',
 			productos :'/api/productos',
-			buscar    :'/api/buscar'
+			buscar    :'/api/buscar',
+			uploads   :'/api/uploads'
 		};
 		//* CONEXION A BD
 		this.conectarDB();
@@ -43,6 +44,7 @@ class Server{
 		this.app.use(this.paths.categorias, require('../routes/categorias.routes'));
 		this.app.use(this.paths.productos, require('../routes/productos.routes'));
 		this.app.use(this.paths.buscar, require('../routes/buscar.routes'));
+		this.app.use(this.paths.uploads, require('../routes/uploads.routes'));
 	}
 
 	listen(){
